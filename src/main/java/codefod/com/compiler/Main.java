@@ -1,4 +1,4 @@
-package codefod.com;
+package codefod.com.compiler;
 
 public class Main {
 
