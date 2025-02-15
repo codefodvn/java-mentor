@@ -37,5 +37,11 @@ public class JvmMemoryExample {
 
         System.out.println("Instance Variable (Heap): " + example.instanceVariable);
         System.out.println("Static Variable (Method Area): " + staticCounter);
+
+        try {
+            Thread.sleep(1000000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
