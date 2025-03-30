@@ -1,4 +1,4 @@
-package codefod.com.mainthread;
+package codefod.com.methodthread;
 
 public class Main {
     static class MyThread extends Thread {

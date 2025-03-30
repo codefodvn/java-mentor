@@ -1,5 +1,8 @@
 package codefod.com.Interthreadcommunication;
 
+// Ở đây nó hoạt động trên cùng 1 object đó là this. Chính là SharedBuffer => đây chính là object monitor
+// Vì chúng ta đang gọi wait() và notify() bên trong synchronized method,
+// mà synchronized không chỉ rõ object nào → nên mặc định là synchronized(this).
 public class Main {
     static class SharedBuffer {
         private int data;
@@ -44,7 +47,7 @@ public class Main {
             for (int i = 1; i <= 5; i++) {
                 buffer.put(i);
                 System.out.println("Producer đặt: " + i);
-                try { Thread.sleep(300); } catch (InterruptedException e) {}
+                try { Thread.sleep(300); } catch (InterruptedException _) {}
             }
         });
 
@@ -53,7 +56,7 @@ public class Main {
             for (int i = 1; i <= 5; i++) {
                 int val = buffer.get();
                 System.out.println("Consumer nhận: " + val);
-                try { Thread.sleep(500); } catch (InterruptedException e) {}
+                try { Thread.sleep(500); } catch (InterruptedException _) {}
             }
         });
 
