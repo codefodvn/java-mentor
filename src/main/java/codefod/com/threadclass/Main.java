@@ -1,4 +1,4 @@
-package codefod.com.multithread;
+package codefod.com.threadclass;
 
 public class Main {
 
