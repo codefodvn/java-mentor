@@ -12,7 +12,7 @@ public class FullThreadPoolQueueExecutorDemo {
         TimeUnit unit = TimeUnit.SECONDS;
 
         // Queue chứa tối đa 96 task đang chờ
-        BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<>(96);
+        BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<>(100);
 
         // ThreadFactory tùy chỉnh
         ThreadFactory threadFactory = new ThreadFactory() {
@@ -39,7 +39,7 @@ public class FullThreadPoolQueueExecutorDemo {
         );
 
         // ======== 2. Gửi 100 task để quan sát xử lý queue ========
-        for (int i = 1; i <= 100; i++) {
+        for (int i = 1; i <= 200; i++) {
             final int taskId = i;
             try {
                 executor.execute(() -> {
