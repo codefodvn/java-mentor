@@ -17,7 +17,7 @@ public class NIOEchoServer {
                 ServerSocketChannel serverChannel = ServerSocketChannel.open()
         ) {
             serverChannel.configureBlocking(false);
-            serverChannel.bind(new InetSocketAddress(PORT));
+            serverChannel.bind(new InetSocketAddress(PORT)); // localhost:1234
             serverChannel.register(selector, SelectionKey.OP_ACCEPT);
 
             System.out.println("🚀 NIO Echo Server đang chạy tại cổng " + PORT);

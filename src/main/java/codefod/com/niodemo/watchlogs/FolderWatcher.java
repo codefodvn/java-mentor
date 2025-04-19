@@ -9,6 +9,7 @@ import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 
 import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
+import static java.nio.file.StandardWatchEventKinds.ENTRY_DELETE;
 import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
 import static java.nio.file.StandardWatchEventKinds.OVERFLOW;
 
@@ -21,7 +22,7 @@ public class FolderWatcher {
 
             // 🔹 Đăng ký thư mục logs/ để theo dõi các sự kiện CREATE và MODIFY
             Path dir = Paths.get("logs");
-            dir.register(watcher, ENTRY_CREATE, ENTRY_MODIFY);
+            dir.register(watcher, ENTRY_CREATE, ENTRY_MODIFY, ENTRY_DELETE);
 
             System.out.println("👀 Đang giám sát thư mục: " + dir.toAbsolutePath());
 
