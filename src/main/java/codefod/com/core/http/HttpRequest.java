@@ -1,5 +1,6 @@
 package codefod.com.core.http;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ public class HttpRequest {
     private final Map<String, String> headers = new HashMap<>();
     private final Map<String, String> parameters = new HashMap<>();
     private String body;
+    private final Map<String, Object> attributes = new HashMap<>();
 
     public HttpRequest(String rawRequest) {
         parseRequest(rawRequest);
@@ -109,5 +111,21 @@ public class HttpRequest {
 
     public String getProtocol() {
         return protocol;
+    }
+
+    public void setAttribute(String variableName, String variableValue) {
+        attributes.put(variableName, variableValue);
+    }
+
+    public Object getAttribute(String name) {
+        return attributes.get(name);
+    }
+
+    public void removeAttribute(String name) {
+        attributes.remove(name);
+    }
+
+    public Map<String, Object> getAttributes() {
+        return Collections.unmodifiableMap(attributes);
     }
 }
