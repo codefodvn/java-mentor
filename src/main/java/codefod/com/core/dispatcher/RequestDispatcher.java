@@ -40,9 +40,9 @@ public class RequestDispatcher {
     private final List<ServletFilter> filters = new ArrayList<>();
 
     // Nội dung HTML cho các phản hồi lỗi phổ biến
-    private static final String ERROR_500 = "<html><body><h1>500 Lỗi Máy Chủ Nội Bộ</h1><p>Đã xảy ra lỗi khi xử lý yêu cầu của bạn.</p></body></html>";
-    private static final String ERROR_404 = "<html><body><h1>404 Không Tìm Thấy</h1><p>Tài nguyên bạn yêu cầu không tồn tại.</p></body></html>";
-    private static final String ERROR_405 = "<html><body><h1>405 Phương Thức Không Được Phép</h1><p>Phương thức HTTP không được hỗ trợ cho tài nguyên này.</p></body></html>";
+    private static final String ERROR_500 = "<html><body><h1>500 Server error</h1><p>Đã xảy ra lỗi khi xử lý yêu cầu của bạn.</p></body></html>";
+    private static final String ERROR_404 = "<html><body><h1>404 Not found</h1><p>Tài nguyên bạn yêu cầu không tồn tại.</p></body></html>";
+    private static final String ERROR_405 = "<html><body><h1>405 Method not allowed</h1><p>Phương thức HTTP không được hỗ trợ cho tài nguyên này.</p></body></html>";
 
     /**
      * Đăng ký một servlet với đường dẫn cụ thể
@@ -241,6 +241,7 @@ public class RequestDispatcher {
     private void sendErrorResponse(HttpResponse response, int statusCode, String content) throws IOException {
         LOGGER.fine("Gửi phản hồi lỗi: " + statusCode);
         response.setStatusCode(statusCode);
+        response.setHeader("Content-Type", "text/html; charset=UTF-8");
         response.write(content);
     }
 }

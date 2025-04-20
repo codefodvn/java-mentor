@@ -2,6 +2,7 @@ package codefod.com.core.http;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +32,7 @@ public class HttpResponse {
     }
 
     public void write(String content) throws IOException {
-        body.write(content.getBytes());
+        body.write(content.getBytes(StandardCharsets.UTF_8));
     }
 
     public byte[] getBytes() throws IOException {
